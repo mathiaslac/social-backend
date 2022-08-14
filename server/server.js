@@ -3,7 +3,7 @@ const bansRouter = require("./routes/bans");
 const mutesRouter = require("./routes/mutes");
 const ranksRouter = require("./routes/ranks");
 const vipRouter = require("./routes/vip");
-const awpRouter = require("./routes/awp");
+const serversRouter = require("./routes/servers");
 const blogRouter = require("./routes/blog");
 const uploadRouter = require("./routes/upload");
 const cors = require("cors");
@@ -67,6 +67,6 @@ app.use("/api/bans", bansRouter);
 app.use("/api/mutes", mutesRouter);
 app.use("/api/ranks", ranksRouter);
 app.use("/api/vip", vipRouter);
-app.use("/api/awp", awpRouter);
+app.use("/api/servers", serversRouter);
 
 app.listen(5000, () => console.log("Server Started..."));

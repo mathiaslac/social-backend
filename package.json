@@ -23,7 +23,7 @@
     "passport": "^0.4.1",
     "passport-steam": "^1.0.14",
     "sequelize": "^6.3.5",
-    "source-server-query": "^1.0.1",
+    "source-server-query": "^3.0.3",
     "srcds-rcon": "github:randunel/node-srcds-rcon",
     "steam-login": "^0.1.7",
     "steamid": "^1.1.3"
