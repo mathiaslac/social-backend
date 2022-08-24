@@ -1,15 +1,17 @@
 const express = require("express");
 
-const SteamID = require("steamid");
-
-const pool = require("../db/ranks");
+const awp = require("../db/ranks/awp");
+const arena = require("../db/ranks/arena");
+const retake = require("../db/ranks/retake");
+const hns = require("../db/ranks/hns");
+const dm = require("../db/ranks/dm");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/awp", async (req, res) => {
   try {
     const results = await new Promise((resolve, reject) => {
-      pool.query(
+      awp.query(
         `SELECT * FROM lvl_base ORDER BY lvl_base . value DESC LIMIT 100`,
         (err, results) => {
           if (err) {
@@ -26,12 +28,11 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:SteamID", async (req, res) => {
-  SteamID = new SteamID(req.params);
+router.get("/arena", async (req, res) => {
   try {
     const results = await new Promise((resolve, reject) => {
-      pool.query(
-        `SELECT * FROM lvl_base WHERE steam = ${SteamID}`,
+      arena.query(
+        `SELECT * FROM lvl_base ORDER BY lvl_base . value DESC LIMIT 100`,
         (err, results) => {
           if (err) {
             return reject(err);
@@ -47,16 +48,64 @@ router.get("/:SteamID", async (req, res) => {
   }
 });
 
-// POUR GÉRER LA DB: https://sequelize.org/
-// STEAMID: https://www.npmjs.com/package/steamid
+router.get("/retake", async (req, res) => {
+  try {
+    const results = await new Promise((resolve, reject) => {
+      retake.query(
+        `SELECT * FROM lvl_base ORDER BY lvl_base . value DESC LIMIT 100`,
+        (err, results) => {
+          if (err) {
+            return reject(err);
+          }
+          return resolve(results);
+        }
+      );
+    });
+    res.send(results);
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
+});
 
-//const dasdj = [
-//    { title: "Caca", count: 0 },
-//    { title: "PIPI", count: 21 },
-//].sort((a, b) => b.count - a.count )
+router.get("/hns", async (req, res) => {
+  try {
+    const results = await new Promise((resolve, reject) => {
+      hns.query(
+        `SELECT * FROM lvl_base ORDER BY lvl_base . value DESC LIMIT 100`,
+        (err, results) => {
+          if (err) {
+            return reject(err);
+          }
+          return resolve(results);
+        }
+      );
+    });
+    res.send(results);
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
+});
 
-//const ex = 546645
-
-//const title = dasdj.find(rank => ex >= rank.count)
+router.get("/dm", async (req, res) => {
+  try {
+    const results = await new Promise((resolve, reject) => {
+      dm.query(
+        `SELECT * FROM lvl_base ORDER BY lvl_base . value DESC LIMIT 100`,
+        (err, results) => {
+          if (err) {
+            return reject(err);
+          }
+          return resolve(results);
+        }
+      );
+    });
+    res.send(results);
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
+});
 
 module.exports = router;
