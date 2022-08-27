@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>All ok</title>
+</head>
+
+<body>
+  You can close this window!
+
+  <script>
+    window.opener.postMessage({
+      token: '<%= jwtToken %>',
+      ok: '<%= ok %>',
+      error: '<%= error %>'
+    }, '<%= clientUrl %>');
+
+    window.close();
+  </script>
+</body>
+
+</html>
