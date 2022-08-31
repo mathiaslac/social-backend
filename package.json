@@ -19,6 +19,7 @@
     "node-steam-openid": "^1.0.1",
     "nodemon": "^2.0.19",
     "source-server-query": "^3.0.3",
+    "steamid": "^2.0.0",
     "steamidconvert": "^0.2.4"
   }
 }

@@ -16,13 +16,16 @@ class ServersController {
   }
 
   async player(req, res, next) {
-    req.serverid.db.query("SELECT * FROM lvl_base", (err, result) => {
-      if (err) {
-        console.log(err);
-        return res.sendStatus(500);
+    req.serverid.db.query(
+      "SELECT * FROM lvl_base WHERE steam = '${SteamID}`",
+      (err, result) => {
+        if (err) {
+          console.log(result);
+          return res.sendStatus(500);
+        }
+        return res.json(result);
       }
-      return res.json(result);
-    });
+    );
   }
 
   async count(req, res, next) {
