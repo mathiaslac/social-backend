@@ -1,6 +1,8 @@
 const { SourceQuerySocket } = require("source-server-query");
 const query = new SourceQuerySocket();
 
+const SteamID = require("steamid");
+
 class ServersController {
   async ranks(req, res, next) {
     req.serverid.db.query(
@@ -17,7 +19,8 @@ class ServersController {
 
   async player(req, res, next) {
     req.serverid.db.query(
-      "SELECT * FROM lvl_base WHERE steam = '${SteamID}`",
+      "SELECT * FROM lvl_base WHERE steam = ?",
+      `${req.params["steamID"]}`,
       (err, result) => {
         if (err) {
           console.log(result);
