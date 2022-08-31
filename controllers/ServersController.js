@@ -16,7 +16,7 @@ class ServersController {
   }
 
   async player(req, res, next) {
-    req.serverid.db.query("SELECT * FROM lvl_base ", (err, result) => {
+    req.serverid.db.query("SELECT * FROM lvl_base", (err, result) => {
       if (err) {
         console.log(err);
         return res.sendStatus(500);
