@@ -4,7 +4,7 @@ const query = new SourceQuerySocket();
 class ServersController {
   async ranks(req, res, next) {
     req.serverid.db.query(
-      "SELECT * FROM lvl_base ORDER BY lvl_base DESC LIMIT 100",
+      "SELECT * FROM lvl_base ORDER BY lvl_base.value DESC LIMIT 100",
       (err, result) => {
         if (err) {
           console.log(err);
@@ -13,6 +13,16 @@ class ServersController {
         return res.json(result);
       }
     );
+  }
+
+  async player(req, res, next) {
+    req.serverid.db.query("SELECT * FROM lvl_base ", (err, result) => {
+      if (err) {
+        console.log(err);
+        return res.sendStatus(500);
+      }
+      return res.json(result);
+    });
   }
 
   async count(req, res, next) {

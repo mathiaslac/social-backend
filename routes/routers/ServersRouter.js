@@ -6,6 +6,9 @@ const router = new Router();
 router.get("/:server/ranks", issetServerMiddleware, (...args) =>
   ServersController.ranks(...args)
 );
+router.get("/:server/player", issetServerMiddleware, (...args) =>
+  ServersController.player(...args)
+);
 router.get("/:server/count", issetServerMiddleware, (...args) =>
   ServersController.count(...args)
 );
