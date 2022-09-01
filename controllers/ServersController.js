@@ -30,6 +30,84 @@ class ServersController {
       }
     );
   }
+  async clutch(req, res, next) {
+    req.serverid.db.query(
+      "SELECT * FROM lvl_base_clutch WHERE steamid = ?",
+      `${req.params["steamID"]}`,
+      (err, result) => {
+        if (err) {
+          console.log(result);
+          return res.sendStatus(500);
+        }
+        return res.json(result);
+      }
+    );
+  }
+  async geoip(req, res, next) {
+    req.serverid.db.query(
+      "SELECT * FROM lvl_base_geoip WHERE steam = ?",
+      `${req.params["steamID"]}`,
+      (err, result) => {
+        if (err) {
+          console.log(result);
+          return res.sendStatus(500);
+        }
+        return res.json(result);
+      }
+    );
+  }
+  async hits(req, res, next) {
+    req.serverid.db.query(
+      "SELECT * FROM lvl_base_hits WHERE SteamID = ?",
+      `${req.params["steamID"]}`,
+      (err, result) => {
+        if (err) {
+          console.log(result);
+          return res.sendStatus(500);
+        }
+        return res.json(result);
+      }
+    );
+  }
+  async maps(req, res, next) {
+    req.serverid.db.query(
+      "SELECT * FROM lvl_base_maps WHERE steam = ?",
+      `${req.params["steamID"]}`,
+      (err, result) => {
+        if (err) {
+          console.log(result);
+          return res.sendStatus(500);
+        }
+        return res.json(result);
+      }
+    );
+  }
+  async uk(req, res, next) {
+    req.serverid.db.query(
+      "SELECT * FROM lvl_base_uk WHERE SteamID = ?",
+      `${req.params["steamID"]}`,
+      (err, result) => {
+        if (err) {
+          console.log(result);
+          return res.sendStatus(500);
+        }
+        return res.json(result);
+      }
+    );
+  }
+  async weapons(req, res, next) {
+    req.serverid.db.query(
+      "SELECT * FROM lvl_base_weapons WHERE steam = ?",
+      `${req.params["steamID"]}`,
+      (err, result) => {
+        if (err) {
+          console.log(result);
+          return res.sendStatus(500);
+        }
+        return res.json(result);
+      }
+    );
+  }
 
   async count(req, res, next) {
     req.serverid.db.query(
