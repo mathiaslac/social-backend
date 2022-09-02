@@ -81,6 +81,15 @@ const Blog = mysql.createPool({
   port: "3306",
 });
 
+const All = mysql.createPool({
+  connectionLimit: 10,
+  password: "root",
+  user: "root",
+  database: "all_db",
+  host: "127.0.0.1",
+  port: "3306",
+});
+
 module.exports = {
   Arena,
   Awp,
@@ -91,4 +100,5 @@ module.exports = {
   Bans,
   Blog,
   Comp,
+  All,
 };
