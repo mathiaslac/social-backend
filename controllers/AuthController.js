@@ -36,7 +36,7 @@ class AuthController {
 
             Bans.query(`SELECT * FROM sb_admins WHERE authid LIKE "%${steam_short}%"`, function(err, results) {
                 let group_return = 0;
-                if( typeof results[0] !== "undefined" )
+                if( typeof results !== "undefined" )
                 {
                     let group = results[0]?.srv_group;
                     if( typeof group !== "undefined" )
