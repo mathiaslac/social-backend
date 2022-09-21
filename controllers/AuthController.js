@@ -35,13 +35,16 @@ class AuthController {
             const steam_short = convertor.convertToText(user.steamid).substring(10);
 
             Bans.query(`SELECT * FROM sb_admins WHERE authid LIKE "%${steam_short}%"`, function(err, results) {
-                let group = results[0]?.srv_group;
                 let group_return = 0;
-                if( typeof group !== "undefined" )
+                if( typeof results[0] !== "undefined" )
                 {
-                    const groups_levels = JSON.parse(fs.readFileSync('./config/groups.json', 'utf8'));
-                    if( groups_levels[group] )
-                        group_return = groups_levels[group];
+                    let group = results[0]?.srv_group;
+                    if( typeof group !== "undefined" )
+                    {
+                        const groups_levels = JSON.parse(fs.readFileSync('./config/groups.json', 'utf8'));
+                        if( groups_levels[group] )
+                            group_return = groups_levels[group];
+                    }
                 }
                 const token = generateJwt(user.username, user.avatar, user.steamid, steam_short, group_return)
                 return res.render("auth", {
