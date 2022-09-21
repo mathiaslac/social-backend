@@ -1,6 +1,6 @@
 const { All } = require("../config/db");
 
-class BansController {
+class ShopController {
   async get(req, res, next) {
     All.query(
       "SELECT * FROM shop_players WHERE auth = ?",
@@ -17,4 +17,4 @@ class BansController {
   }
 }
 
-module.exports = new BansController();
+module.exports = new ShopController();

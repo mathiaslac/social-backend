@@ -1,9 +1,3 @@
-// const { SourceQuerySocket } = require('source-server-query');
-
-// const query = new SourceQuerySocket();
-
-// query.info('185.137.235.124', 27015, 1000).then(console.log); // A2S_INFO
-
 require("dotenv").config();
 
 // Express

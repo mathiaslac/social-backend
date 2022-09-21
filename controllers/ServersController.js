@@ -124,7 +124,9 @@ class ServersController {
 
   async monitoring(req, res, next) {
     await query.info(req.serverid.ip, req.serverid.port, 1000).then((data) => {
-      return res.json(this.bigint_fix(data));
+      return res.send(this.bigint_fix(data));
+    }).catch((e) => {
+      return res.json([]);
     });
   }
 
@@ -132,7 +134,10 @@ class ServersController {
     await query
       .players(req.serverid.ip, req.serverid.port, 1000)
       .then((data) => {
-        return res.json(this.bigint_fix(data));
+        return res.send(this.bigint_fix(data));
+      }).catch((e) => {
+        console.log(`ERR - ${e}`);
+        return res.json([]);
       });
   }
 
@@ -140,11 +145,10 @@ class ServersController {
    * JSON have problems with bigint
    */
   bigint_fix(object) {
-    return JSON.parse(
-      JSON.stringify(object, (_, v) =>
-        typeof v === "bigint" ? v.toString() : v
-      )
-    );
+    if (object !== undefined) {
+      return JSON.stringify(object, (_, v) => typeof v === `bigint` ? `${v}#bigint` : v)
+          .replace(/"(-?\d+)#bigint"/g, (_, a) => a);
+    }
   }
 }
 
