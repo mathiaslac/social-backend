@@ -1,10 +1,9 @@
-const { All } = require("../config/db");
+const { Admins } = require("../config/db");
 
-class ShopController {
+class AdminsController {
   async get(req, res, next) {
-    All.query(
-      "SELECT * FROM shop_players WHERE auth LIKE ?",
-      `${req.params["steamID"]}`,
+    Admins.query(
+      "SELECT * FROM sb_admins ORDER BY srv_group",
       (err, results) => {
         if (err) {
           console.log(err);
@@ -17,4 +16,4 @@ class ShopController {
   }
 }
 
-module.exports = new ShopController();
+module.exports = new AdminsController();

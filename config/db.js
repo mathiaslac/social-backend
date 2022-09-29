@@ -67,7 +67,34 @@ const Bans = mysql.createPool({
   connectionLimit: 10,
   password: "root",
   user: "root",
-  database: "bans",
+  database: "all_db",
+  host: "127.0.0.1",
+  port: "3306",
+});
+
+const Comms = mysql.createPool({
+  connectionLimit: 10,
+  password: "root",
+  user: "root",
+  database: "all_db",
+  host: "127.0.0.1",
+  port: "3306",
+});
+
+const Admins = mysql.createPool({
+  connectionLimit: 10,
+  password: "root",
+  user: "root",
+  database: "all_db",
+  host: "127.0.0.1",
+  port: "3306",
+});
+
+const Vip = mysql.createPool({
+  connectionLimit: 10,
+  password: "root",
+  user: "root",
+  database: "all_db",
   host: "127.0.0.1",
   port: "3306",
 });
@@ -98,6 +125,9 @@ module.exports = {
   Hns,
   Retake,
   Bans,
+  Comms,
+  Admins,
+  Vip,
   Blog,
   Comp,
   All,
