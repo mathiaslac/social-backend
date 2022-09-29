@@ -123,11 +123,15 @@ class ServersController {
   }
 
   async monitoring(req, res, next) {
-    await query.info(req.serverid.ip, req.serverid.port, 1000).then((data) => {
-      return res.send(this.bigint_fix(data));
-    }).catch((e) => {
-      return res.json([]);
-    });
+    await query
+      .info(req.serverid.ip, req.serverid.port, 1000)
+      .then((data) => {
+        return res.send(this.bigint_fix(data));
+      })
+      .catch((e) => {
+        console.log(`ERR - ${e}`);
+        return res.json([]);
+      });
   }
 
   async monitoring_players(req, res, next) {
@@ -135,7 +139,8 @@ class ServersController {
       .players(req.serverid.ip, req.serverid.port, 1000)
       .then((data) => {
         return res.send(this.bigint_fix(data));
-      }).catch((e) => {
+      })
+      .catch((e) => {
         console.log(`ERR - ${e}`);
         return res.json([]);
       });
@@ -146,8 +151,9 @@ class ServersController {
    */
   bigint_fix(object) {
     if (object !== undefined) {
-      return JSON.stringify(object, (_, v) => typeof v === `bigint` ? `${v}#bigint` : v)
-          .replace(/"(-?\d+)#bigint"/g, (_, a) => a);
+      return JSON.stringify(object, (_, v) =>
+        typeof v === `bigint` ? `${v}#bigint` : v
+      ).replace(/"(-?\d+)#bigint"/g, (_, a) => a);
     }
   }
 }
