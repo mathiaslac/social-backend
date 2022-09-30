@@ -1,6 +1,8 @@
 const { SourceQuerySocket } = require("source-server-query");
 const query = new SourceQuerySocket();
 
+const steam_short = require("./AuthController");
+
 const SteamID = require("steamid");
 
 class ServersController {
@@ -10,6 +12,19 @@ class ServersController {
       (err, result) => {
         if (err) {
           console.log(err);
+          return res.sendStatus(500);
+        }
+        return res.json(result);
+      }
+    );
+  }
+
+  async allranks(req, res, next) {
+    req.serverid.db.query(
+      `SELECT * FROM lvl_base WHERE steam LIKE "%${req.params["steamID"]}%"`,
+      (err, result) => {
+        if (err) {
+          console.log(result);
           return res.sendStatus(500);
         }
         return res.json(result);

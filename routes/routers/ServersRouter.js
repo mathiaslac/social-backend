@@ -9,6 +9,12 @@ router.get("/:server/ranks", issetServerMiddleware, (...args) =>
 router.get("/:server/player/:steamID", issetServerMiddleware, (...args) =>
   ServersController.player(...args)
 );
+
+router.get(
+  "/:server/currentplayer/:steamID",
+  issetServerMiddleware,
+  (...args) => ServersController.allranks(...args)
+);
 router.get("/:server/clutch/:steamID", issetServerMiddleware, (...args) =>
   ServersController.clutch(...args)
 );
