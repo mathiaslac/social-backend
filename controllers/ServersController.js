@@ -34,8 +34,7 @@ class ServersController {
 
   async player(req, res, next) {
     req.serverid.db.query(
-      "SELECT * FROM lvl_base WHERE steam = ?",
-      `${req.params["steamID"]}`,
+      `SELECT * FROM lvl_base WHERE steam LIKE "%${req.params["steamID"]}%"`,
       (err, result) => {
         if (err) {
           console.log(result);
@@ -47,8 +46,7 @@ class ServersController {
   }
   async clutch(req, res, next) {
     req.serverid.db.query(
-      "SELECT * FROM lvl_base_clutch WHERE steamid = ?",
-      `${req.params["steamID"]}`,
+      `SELECT * FROM lvl_base_clutch WHERE steam LIKE "%${req.params["steamID"]}%"`,
       (err, result) => {
         if (err) {
           console.log(result);
@@ -60,8 +58,7 @@ class ServersController {
   }
   async geoip(req, res, next) {
     req.serverid.db.query(
-      "SELECT * FROM lvl_base_geoip WHERE steam = ?",
-      `${req.params["steamID"]}`,
+      `SELECT * FROM lvl_base_geoip WHERE steam LIKE "%${req.params["steamID"]}%"`,
       (err, result) => {
         if (err) {
           console.log(result);
@@ -73,8 +70,7 @@ class ServersController {
   }
   async hits(req, res, next) {
     req.serverid.db.query(
-      "SELECT * FROM lvl_base_hits WHERE SteamID = ?",
-      `${req.params["steamID"]}`,
+      `SELECT * FROM lvl_base_hits WHERE steam LIKE "%${req.params["steamID"]}%"`,
       (err, result) => {
         if (err) {
           console.log(result);
@@ -86,8 +82,7 @@ class ServersController {
   }
   async maps(req, res, next) {
     req.serverid.db.query(
-      "SELECT * FROM lvl_base_maps WHERE steam = ?",
-      `${req.params["steamID"]}`,
+      `SELECT * FROM lvl_base_maps WHERE steam LIKE "%${req.params["steamID"]}%"`,
       (err, result) => {
         if (err) {
           console.log(result);
@@ -99,8 +94,7 @@ class ServersController {
   }
   async uk(req, res, next) {
     req.serverid.db.query(
-      "SELECT * FROM lvl_base_uk WHERE SteamID = ?",
-      `${req.params["steamID"]}`,
+      `SELECT * FROM lvl_base_uk WHERE steam LIKE "%${req.params["steamID"]}%"`,
       (err, result) => {
         if (err) {
           console.log(result);
@@ -112,8 +106,7 @@ class ServersController {
   }
   async weapons(req, res, next) {
     req.serverid.db.query(
-      "SELECT * FROM lvl_base_weapons WHERE steam = ?",
-      `${req.params["steamID"]}`,
+      `SELECT * FROM lvl_base_weapons WHERE steam LIKE "%${req.params["steamID"]}%"`,
       (err, result) => {
         if (err) {
           console.log(result);
