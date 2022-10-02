@@ -1,10 +1,6 @@
 const { SourceQuerySocket } = require("source-server-query");
 const query = new SourceQuerySocket();
 
-const steam_short = require("./AuthController");
-
-const SteamID = require("steamid");
-
 class ServersController {
   async ranks(req, res, next) {
     req.serverid.db.query(

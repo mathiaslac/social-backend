@@ -10,7 +10,7 @@ const VipRouter = require("./routers/VipRouter");
 const ServersRouter = require("./routers/ServersRouter");
 const ShopRouter = require("./routers/ShopRouter");
 const SearchRouter = require("./routers/SearchRouter");
-// const AvatarRouter = require("./routers/AvatarRouter");
+const AvatarRouter = require("./routers/AvatarRouter");
 
 router.use("/upload", UploadRouter);
 router.use("/blog", BlogRouter);
@@ -21,6 +21,6 @@ router.use("/premiums", VipRouter);
 router.use("/servers", ServersRouter);
 router.use("/shop", ShopRouter);
 router.use("/search/", SearchRouter);
-// router.use("/avatar", AvatarRouter);
+router.use("/avatar", AvatarRouter);
 
 module.exports = router;

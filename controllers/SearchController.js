@@ -2,7 +2,7 @@ const { All } = require("../config/db");
 
 class SearchController {
   async get(req, res, next) {
-    All.query(`SELECT * FROM mostactive`, (err, results) => {
+    All.query(`SELECT * FROM store_players`, (err, results) => {
       if (err) {
         console.log(err);
         return res.sendStatus(500);
