@@ -6,6 +6,9 @@ const router = new Router();
 router.get("/:server/ranks", issetServerMiddleware, (...args) =>
   ServersController.ranks(...args)
 );
+router.get("/:server/steamids", issetServerMiddleware, (...args) =>
+  ServersController.steamids(...args)
+);
 router.get("/:server/player/:steamID", issetServerMiddleware, (...args) =>
   ServersController.player(...args)
 );

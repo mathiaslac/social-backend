@@ -15,6 +15,19 @@ class ServersController {
     );
   }
 
+  async steamids(req, res, next) {
+    req.serverid.db.query(
+      "SELECT steam FROM lvl_base ORDER BY lvl_base.value DESC LIMIT 100",
+      (err, result) => {
+        if (err) {
+          console.log(err);
+          return res.sendStatus(500);
+        }
+        return res.json(result);
+      }
+    );
+  }
+
   async allranks(req, res, next) {
     req.serverid.db.query(
       `SELECT * FROM lvl_base WHERE steam LIKE "%${req.params["steamID"]}%"`,
