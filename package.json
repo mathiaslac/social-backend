@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon index.js"
+    "dev": "npx nodemon index.js",
+    "start": "SECRET_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c JWT_TIME=24h STEAM_SITE=https://social-backend-lime.vercel.app/api STEAM_API_KEY=580D83F70BA4F7FDD1007607561AFDFB FRONTEND_URL=https://social-frontend-beige.vercel.app/ DB_USER=root DB_PASS=root DB_HOST=127.0.0.1 DB_PORT=3306 DB_NAME_ALL=all_db DB_NAME_ARENA=arena DB_NAME_AWP=awp_lego DB_NAME_BHOP=bhop DB_NAME_DM=dm DB_NAME_HNS=hns DB_NAME_RETAKE=retake DB_NAME_COMP=comp npx nodemon index.js"
   },
   "author": "",
   "license": "ISC",
